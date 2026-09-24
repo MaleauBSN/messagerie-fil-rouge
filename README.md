@@ -4,7 +4,7 @@ Projet réalisé dans le cadre du cours **8WEB101 – Conception et programmatio
 
 Une messagerie instantanée Web permettant d'échanger des messages texte en temps réel.
 
-**Site en ligne :** [à venir (GitHub Pages)](https://maleaubsn.github.io/messagerie-fil-rouge/)
+**Site en ligne :** [GitHub Page](https://maleaubsn.github.io/messagerie-fil-rouge/)
 
 **Lien du penpot:** https://design.penpot.app/#/view?file-id=c514c1fb-1cda-8125-8008-a362617a0fef&page-id=c514c1fb-1cda-8125-8008-a362617a0ff0&section=interactions&index=0&share-id=c649fc9e-4f65-428d-8fee-a078faff9b95
 
