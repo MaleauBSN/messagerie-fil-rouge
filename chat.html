@@ -14,25 +14,35 @@
 <body>
 
 <header>
-    <h1>Mon Projet</h1>
+    <h1>Ma super messagerie</h1>
 </header>
 
-<main>
-    <h2 class="contact-list">Liste des contacts</h2><a href="#ajout_contact">+</a>
-    <ul>
-        <li class="contact">contact1</li>
-        <li class="contact">contact2</li>
-        <li class="contact">contact3</li>
-        <li class="contact">contact4</li>
+<main class="chat-layout">
+    <aside class="contacts-panel">
+        <div class="panel-header">
+            <h2>Liste des contacts</h2>
+            <a href="#ajout_contact" class="btn-add" aria-label="Ajouter un contact">+</a>
+        </div>
+        <ul class="contact-list">
+            <li class="contact"><a href="#">contact1</a></li>
+            <li class="contact"><a href="#">contact2</a></li>
+            <li class="contact"><a href="#">contact3</a></li>
+            <li class="contact"><a href="#">contact4</a></li>
+        </ul>
+    </aside>
 
-    </ul>
-    <h2 class="message-list">Nom du contact</h2><a href="#modif_contact">modifier le contact</a>
-    <ul>
-        <li class="message">message 1</li>
-        <li class="message">message 2</li>
-        <li class="message">message 3</li>
-        <li class="message">message 4</li>
-    </ul>
+    <section class="chat-panel">
+        <div class="chat-header">
+            <h2>Nom du contact</h2>
+            <a href="#modif_contact">modifier le contact</a>
+        </div>
+        <ul class="message-list">
+            <li class="message">message 1</li>
+            <li class="message">message 2</li>
+            <li class="message">message 3</li>
+            <li class="message">message 4</li>
+        </ul>
+    </section>
 </main>
 
 <footer>
@@ -46,4 +56,4 @@
 
 <script src="assets/js/main.js"></script>
 </body>
-</html>h
+</html>

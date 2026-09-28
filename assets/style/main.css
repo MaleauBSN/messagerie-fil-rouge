@@ -72,14 +72,16 @@ main {
     gap: 18px;
 }
 
+.form-connexion h1 {
+    color: white;
+    margin-bottom: 20px;
+}
+
 .form-connexion label {
     display: block;
     margin-bottom: 6px;
     font-weight: bold;
     color: whitesmoke;
-}
-.password-requirements{
-    color: white;
 }
 
 .form-connexion input {
@@ -117,7 +119,7 @@ main {
     list-style: none;
     margin-top: 6px;
     font-size: 0.85rem;
-    color: #666;
+    color: #e0e6f0;
 }
 
 main > a {
@@ -129,5 +131,132 @@ main > a {
 }
 
 main > a:hover {
+    text-decoration: underline;
+}
+
+.chat-layout {
+    display: flex;
+    align-items: stretch;
+    gap: 20px;
+    width: 100%;
+    margin-top: 40px;
+}
+
+.contacts-panel {
+    width: 260px;
+    flex-shrink: 0;
+    background: white;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+}
+
+.panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.panel-header h2 {
+    color: #082c5b;
+    font-size: 1.1rem;
+}
+
+.btn-add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #356aae;
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    transition: background-color 0.2s ease;
+}
+
+.btn-add:hover {
+    background: #082c5b;
+}
+
+.contact-list {
+    list-style: none;
+}
+
+.contact {
+    margin-bottom: 10px;
+}
+
+.contact a {
+    display: block;
+    background: #356aae;
+    color: white;
+    padding: 10px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+.contact a:hover {
+    background: #082c5b;
+}
+
+.chat-panel {
+    flex: 1;
+    background: white;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+.chat-header {
+    background: #356aae;
+    color: white;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.chat-header a {
+    color: whitesmoke;
+    font-size: 0.85rem;
+}
+
+.message-list {
+    list-style: none;
+    padding: 20px;
+}
+
+.message {
+    background: #F0F8FF;
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    max-width: 70%;
+}
+
+footer {
+    background: #082c5b;
+    color: whitesmoke;
+    padding: 20px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+footer nav {
+    margin-top: 8px;
+}
+
+footer nav a {
+    color: whitesmoke;
+    text-decoration: none;
+    opacity: 0.85;
+}
+
+footer nav a:hover {
+    opacity: 1;
     text-decoration: underline;
 }

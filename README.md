@@ -23,7 +23,7 @@ Une messagerie instantanée Web permettant d'échanger des messages texte en tem
 - Affichage horodaté des messages
 
 ### Secondaires
-- À déterminer (fonctionnalité supplémentaire libre)
+- **Distance et temps de trajet entre utilisateurs** — Dans chaque conversation, l'application affiche la distance et le temps de trajet estimé entre l'utilisateur et son contact, calculés en temps réel à partir de leurs adresses respectives via l'API Distancematrix.ai. Cette information apparaît directement dans l'en-tête du salon de discussion (ex. « 12 km · 18 min »), sans interrompre l'échange de messages.
 
 ## Technologies
 
