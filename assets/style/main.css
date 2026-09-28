@@ -55,3 +55,79 @@ main {
 .btn-inscription{
     background: #082c5b;
 }
+
+.form-connexion {
+    background: #356aae;
+    width: 90%;
+    max-width: 420px;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.form-connexion form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.form-connexion label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: whitesmoke;
+}
+.password-requirements{
+    color: white;
+}
+
+.form-connexion input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-connexion input:focus {
+    outline: none;
+    border-color: #356aae;
+    box-shadow: 0 0 0 3px rgba(53, 106, 174, 0.2);
+}
+
+.form-connexion button[type="submit"] {
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: white;
+    color: #356aae;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.form-connexion button[type="submit"]:hover {
+    background: #082c5b;
+}
+
+#password-requirements {
+    list-style: none;
+    margin-top: 6px;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+main > a {
+    display: block;
+    text-align: center;
+    margin-top: 14px;
+    color: #356aae;
+    text-decoration: none;
+}
+
+main > a:hover {
+    text-decoration: underline;
+}
