@@ -143,6 +143,7 @@ main > a:hover {
 }
 
 .contacts-panel {
+    border-radius: 10px;
     width: 260px;
     flex-shrink: 0;
     background: white;
@@ -190,6 +191,7 @@ main > a:hover {
 }
 
 .contact a {
+    border-radius: 10px;
     display: block;
     background: #356aae;
     color: white;
@@ -207,17 +209,37 @@ main > a:hover {
 .chat-panel {
     flex: 1;
     background: white;
+    border-radius: 10px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
     overflow: hidden;
 }
 
-.chat-header {
+.header-contact {
+    border-radius: 10px;
     background: #356aae;
     color: white;
     padding: 16px 20px;
+    margin-left: 0.1%;
+    width: 66.47%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.header-navigation {
+    margin-left: 0.1%;
+    border-radius: 10px;
+    background: #ffad74;
+    color: white;
+    padding: 16px 20px;
+    width: 33.23%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.chat-header {
+    display: flex;
 }
 
 .chat-header a {
