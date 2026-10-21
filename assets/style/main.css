@@ -114,6 +114,15 @@ main {
     background: #082c5b;
 }
 
+.form-status {
+    color: white;
+    font-size: 0.9rem;
+}
+
+.form-status:empty {
+    display: none;
+}
+
 #password-requirements {
     list-style: none;
     margin-top: 6px;
@@ -142,6 +151,8 @@ main > a:hover {
 }
 
 .contacts-panel {
+    display: flex;
+    flex-direction: column;
     border-radius: 5px;
     width: 260px;
     flex-shrink: 0;
@@ -203,6 +214,42 @@ main > a:hover {
 
 .contact a:hover {
     background: #082c5b;
+}
+
+.logout-zone {
+    margin-top: auto;
+    padding-top: 16px;
+}
+
+.btn-logout {
+    width: 100%;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 8px;
+    background: #082c5b;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-logout:hover {
+    background: #356aae;
+}
+
+.btn-logout:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+.logout-status {
+    margin-top: 6px;
+    color: #8b0000;
+    font-size: 0.85rem;
+}
+
+.logout-status:empty {
+    display: none;
 }
 
 .chat-panel {
@@ -280,6 +327,92 @@ main > a:hover {
     border-radius: 8px;
     margin-bottom: 10px;
     max-width: 70%;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+.navigation-panel {
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.navigation-content {
+    width: 90%;
+    max-width: 420px;
+    padding: 24px;
+    border-radius: 12px;
+    background: #ffad74;
+    color: #222;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.navigation-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.navigation-content p {
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+}
+
+.navigation-content .nav-position {
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+}
+
+.navigation-content .nav-status {
+    min-height: 1.5em;
+    margin: 12px 0;
+    font-size: 0.95rem;
+}
+
+.navigation-content .nav-status.ok {
+    font-weight: bold;
+}
+
+.navigation-content .nav-status.erreur {
+    color: #8b0000;
+    font-weight: bold;
+}
+
+.navigation-content button:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+.navigation-content button,
+.nav-links a {
+    display: inline-block;
+    padding: 10px 15px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background: white;
+    color: black;
+    font-size: 0.9rem;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.navigation-content button:hover,
+.nav-links a:hover {
+    background: #ffe9d6;
+}
+
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
 }
 
 footer {

@@ -23,11 +23,16 @@
             <li class="contact"><a href="#">contact3</a></li>
             <li class="contact"><a href="#">contact4</a></li>
         </ul>
+
+        <div class="logout-zone">
+            <button type="button" id="logout-button" class="btn-logout">Déconnexion</button>
+            <p id="logout-status" class="logout-status"></p>
+        </div>
     </aside>
 
     <section class="chat-panel">
         <div class="chat-header">
-            <div class="header-contact">
+            <div class="header-contact" data-contact-id="">
                 <h2>Nom du contact</h2>
                 <div class="bouton-modifier-contact">
                    <a href="#modif_contact">modifier le contact</a> 
@@ -36,7 +41,7 @@
             <div class="header-navigation">
                 <h2>Navigation</h2>
                 <div class="bouton-navigation">
-                    <a href="#navigation">Agrandir</a>
+                    <a href="#navigation" id="navigation-open">Agrandir</a>
                 </div>
             </div>
         </div>
@@ -50,6 +55,28 @@
     </section>
 </main>
 
+<div id="navigation-panel" class="navigation-panel" hidden>
+    <div class="navigation-content">
+        <div class="navigation-header">
+            <h2>Navigation</h2>
+            <button type="button" id="navigation-close" aria-label="Fermer">&times;</button>
+        </div>
+
+        <p>Distance : <span id="nav-distance">-</span></p>
+        <p>Temps : <span id="nav-duree">-</span></p>
+        <p class="nav-position">Ma position : <span id="nav-ma-position">-</span></p>
+        <p class="nav-position">Dernière mise à jour : <span id="nav-synchro">-</span></p>
+        <p id="nav-status" class="nav-status"></p>
+
+        <button type="button" id="nav-update">Mettre à jour</button>
+
+        <div id="nav-links" class="nav-links" hidden>
+            <a id="nav-google" href="#" target="_blank" rel="noopener">Google Maps</a>
+            <a id="nav-waze" href="#" target="_blank" rel="noopener">Waze</a>
+        </div>
+    </div>
+</div>
+
 <footer>
     <p>&copy; <script>document.write(new Date().getFullYear())</script> - Tous droits réservés</p>
     <nav>
@@ -60,6 +87,10 @@
 </footer>
 
 <script src="assets/js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="assets/js/supabase.js"></script>
+<script src="assets/js/geolocalisation.js"></script>
+<script src="assets/js/navigation.js"></script>
+
 </body>
 </html>
