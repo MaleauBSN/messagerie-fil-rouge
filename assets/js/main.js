@@ -1,6 +1,8 @@
+// Vérifications des formulaires en temps réel (email et mot de passe)
 document.addEventListener("DOMContentLoaded", () => {
     console.log("Page chargée");
 
+    // Les vérifications ne s'attachent que sur les pages qui ont ces champs
     const emailInput = document.getElementById("email");
     if (emailInput) {
         emailInput.addEventListener("input", verify_mail);
@@ -13,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+// Met le champ email en rouge tant qu'il n'a pas la forme x@y.z
 function verify_mail(){
     const emailInput = document.getElementById("email");
     const emailRegex = /@.+\..+/;
@@ -23,6 +26,7 @@ function verify_mail(){
     }
 }
 
+// Colore chaque critère du mot de passe : vert s'il est respecté, rouge sinon
 function verify_password(){
     const passwordInput = document.getElementById("password");
     const reqUppercase = document.getElementById("req-uppercase");

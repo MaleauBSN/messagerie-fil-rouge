@@ -1,4 +1,6 @@
+// Client Supabase et fonctions d'authentification (inscription, connexion, déconnexion)
 const SUPABASE_URL = "https://eshvsvyyrdmlgwtfiglz.supabase.co";
+// Clé publique (publishable) : prévue pour être visible côté navigateur
 const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_Hb5v4x8v8iZZJVXWufp23A_fzheBExR";
 
 const supabaseClient = supabase.createClient(
@@ -6,6 +8,7 @@ const supabaseClient = supabase.createClient(
     SUPABASE_PUBLISHABLE_KEY
 )
 
+// Crée le compte à l'envoi du formulaire d'inscription (le pseudo devient le nom d'affichage)
 function inscription() {
     const form = document.getElementById("signup-form");
     if (!form) return;
@@ -34,6 +37,7 @@ function inscription() {
     });
 }
 
+// Connecte l'utilisateur à l'envoi du formulaire de connexion, puis ouvre le chat
 function connexion() {
     const form = document.getElementById("signin-form");
     if (!form) return;
@@ -54,6 +58,7 @@ function connexion() {
     });
 }
 
+// Déconnecte l'utilisateur de ce navigateur seulement (scope "local"), puis retourne à la connexion
 function deconnexion() {
     const bouton = document.getElementById("logout-button");
     if (!bouton) return;
@@ -73,6 +78,7 @@ function deconnexion() {
     });
 }
 
+// Chaque fonction ne fait rien si son formulaire ou son bouton n'est pas sur la page
 inscription();
 connexion();
 deconnexion();
