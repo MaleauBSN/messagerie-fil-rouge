@@ -28,7 +28,7 @@ function inscription() {
         } else {
             status.textContent = "Compte créé ! Redirection vers la page de connexion...";
             setTimeout(() => {
-                window.location.href = "sign_in.html";
+                window.location.href = "connexion.html";
             }, 1500);
         }
     });
@@ -68,7 +68,7 @@ function deconnexion() {
             status.textContent = "Déconnexion impossible : " + error.message;
             bouton.disabled = false;
         } else {
-            window.location.href = "sign_in.html";
+            window.location.href = "connexion.html";
         }
     });
 }

@@ -32,14 +32,25 @@ Une messagerie instantanée Web permettant d'échanger des messages texte en tem
 
 ## Structure du projet
 
+Convention de nommage : noms de fichiers et de dossiers en minuscules, en français, avec les mots séparés par des tirets.
+
 ```
 .
-├── index.html          # Page d'accueil
-├── sign_in.html         # Connexion
-├── sign_up.html         # Inscription
-├── chat.html            # Messagerie
+├── index.html                      # Page d'accueil
+├── connexion.html                  # Connexion
+├── inscription.html                # Inscription
+├── chat.html                       # Messagerie
+├── parametres.html                 # Paramètres
+├── politique-confidentialite.html  # Page légale
+├── conditions-utilisation.html     # Page légale
+├── informations-legales.html       # Page légale
 └── assets/
-    ├── js/               # Scripts JavaScript
-    ├── style/            # Feuilles de style CSS
-    └── docs/             # Maquettes, croquis, arborescence
+    ├── css/
+    │   └── main.css                # Feuille de style
+    ├── js/
+    │   ├── main.js                 # Vérification des formulaires
+    │   ├── supabase.js             # Client Supabase et authentification
+    │   ├── geolocalisation.js      # Position et distance (API Distancematrix.ai)
+    │   └── navigation.js           # Panneau Navigation
+    └── docs/                       # Scripts SQL et documents du projet
 ```
