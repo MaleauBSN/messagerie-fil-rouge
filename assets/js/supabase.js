@@ -6,33 +6,73 @@ const supabaseClient = supabase.createClient(
     SUPABASE_PUBLISHABLE_KEY
 )
 
-function inscription(){
-    document.getElementById("signup-button").addEventListener(
-    "click"
-    async () => {
-        const email = emailInput.value.trim();
-        const password = passwordInput.value;
+function inscription() {
+    const form = document.getElementById("signup-form");
+    if (!form) return;
 
-        const { error } = await supabaseClient.auth.signUp(
-            { email, password }
-        );
+    form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const pseudo = document.getElementById("pseudo").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value;
+        const status = document.getElementById("signup-status");
+
+        const { error } = await supabaseClient.auth.signUp({
+            email,
+            password,
+            options: { data: { display_name: pseudo } }
+        });
         if (error) {
-            loginStatus.textContent = error.message;
+            status.textContent = error.message;
         } else {
-            loginstatus.textContent = "Veuillez confirmer ...";
+            status.textContent = "Compte créé ! Redirection vers la page de connexion...";
+            setTimeout(() => {
+                window.location.href = "sign_in.html";
+            }, 1500);
         }
-    })
+    });
 }
 
 function connexion() {
-    document.getElementById("connexion-button").addEventListener(
-    "click"
-    async () => {
-    const email = emailInput.value.trim();
-    const password = passwordInput.value;
+    const form = document.getElementById("signin-form");
+    if (!form) return;
 
-    const { data, error } = await supabase.auth.signInWithPassword({
-  email: 'example@email.com',
-  password: 'example-password',
-})
+    form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value;
+        const status = document.getElementById("signin-status");
+
+        const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
+        if (error) {
+            status.textContent = error.message;
+        } else {
+            window.location.href = "chat.html";
+        }
+    });
 }
+
+function deconnexion() {
+    const bouton = document.getElementById("logout-button");
+    if (!bouton) return;
+
+    bouton.addEventListener("click", async () => {
+        const status = document.getElementById("logout-status");
+        bouton.disabled = true;
+        status.textContent = "";
+
+        const { error } = await supabaseClient.auth.signOut({ scope: "local" });
+        if (error) {
+            status.textContent = "Déconnexion impossible : " + error.message;
+            bouton.disabled = false;
+        } else {
+            window.location.href = "sign_in.html";
+        }
+    });
+}
+
+inscription();
+connexion();
+deconnexion();

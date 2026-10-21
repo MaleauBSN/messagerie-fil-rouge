@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const passwordInput = document.getElementById("password")
-    if (passwordInput) {
+    if (passwordInput && document.getElementById("password-requirements")) {
         passwordInput.addEventListener("input", verify_password);
     }
 
