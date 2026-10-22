@@ -41,9 +41,7 @@ Convention de nommage : noms de fichiers et de dossiers en minuscules, en franç
 ├── inscription.html                # Inscription
 ├── chat.html                       # Messagerie
 ├── parametres.html                 # Paramètres
-├── politique-confidentialite.html  # Page légale
-├── conditions-utilisation.html     # Page légale
-├── informations-legales.html       # Page légale
+├── politique-confidentialite.html  # Politique de confidentialité
 └── assets/
     ├── css/
     │   └── main.css                # Feuille de style
