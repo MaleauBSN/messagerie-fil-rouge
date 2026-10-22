@@ -269,6 +269,8 @@ main > a:hover {
     border-radius: 5px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .header-contact {
@@ -330,6 +332,8 @@ main > a:hover {
 .message-list {
     list-style: none;
     padding: 20px;
+    flex: 1;
+    overflow-y: auto;
 }
 
 .message {
@@ -490,7 +494,7 @@ footer nav a:hover {
 
 .barre-texte input {
     margin-left: 5%;
-    width: 75%;
+    width: 90%;
     padding: 7px;
     border-radius: 10px;
     border: 2px solid black;
@@ -502,7 +506,7 @@ footer nav a:hover {
 }
 
 .bouton-envoyer button[type="submit"] {
-    width: 75%;
+    width: auto;
     padding: 7px;
     border-radius: 10px;
     border: 2px solid black;

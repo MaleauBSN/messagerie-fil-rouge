@@ -80,7 +80,7 @@ function deconnexion() {
 
 function enregistrer_message() {
     const status = document.getElementById("bouton-envoyer");
-    if (!bouton) return;
+    if (!status) return;
 
     bouton.addEventListener("click", async () => {
         const message = document.getElementById("barre-texte-message");
@@ -88,6 +88,14 @@ function enregistrer_message() {
         supabaseClient.from("messages")
         supabaseClient.insert([{content : message}])
     })
+}
+
+function recupere_message() {
+    
+}
+
+function recupere_message_chanel() {
+
 }
 
 inscription();
