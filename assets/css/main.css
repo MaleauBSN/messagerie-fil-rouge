@@ -428,6 +428,37 @@ main > a:hover {
     margin-top: 16px;
 }
 
+/* Pages de texte (politique de confidentialité) */
+.page-texte {
+    background: white;
+    width: 90%;
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.page-texte h2 {
+    margin: 24px 0 8px;
+    color: #082c5b;
+    font-size: 1.2rem;
+}
+
+.page-texte p,
+.page-texte ul {
+    margin-bottom: 10px;
+}
+
+.page-texte ul {
+    padding-left: 24px;
+}
+
+.page-texte-date {
+    color: #666;
+    font-size: 0.9rem;
+}
+
 /* Pied de page */
 footer {
     background: #082c5b;
