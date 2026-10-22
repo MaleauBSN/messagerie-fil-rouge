@@ -1,3 +1,4 @@
+/* Réinitialisation des marges */
 * {
     margin: 0;
     padding: 0;
@@ -14,6 +15,7 @@ body {
     background-color: #F0F8FF;
 }
 
+/* En-tête */
 header {
     width: 90%;
     padding: 20px;
@@ -30,6 +32,8 @@ main {
     flex: 1;
 
 }
+
+/* Page d'accueil : boutons de connexion et d'inscription */
 .cta {
     display: flex;
     justify-content: center;
@@ -55,6 +59,7 @@ main {
     background: #082c5b;
 }
 
+/* Formulaires de connexion et d'inscription */
 .form-connexion {
     background: #356aae;
     width: 90%;
@@ -114,6 +119,7 @@ main {
     background: #082c5b;
 }
 
+/* Messages d'état des formulaires */
 .form-status {
     color: white;
     font-size: 0.9rem;
@@ -123,6 +129,7 @@ main {
     display: none;
 }
 
+/* Critères du mot de passe */
 #password-requirements {
     list-style: none;
     margin-top: 6px;
@@ -130,6 +137,7 @@ main {
     color: rgb(246, 125, 125);
 }
 
+/* Liens sous les formulaires */
 main > a {
     display: block;
     text-align: center;
@@ -142,6 +150,7 @@ main > a:hover {
     text-decoration: underline;
 }
 
+/* Page de chat : contacts à gauche, conversation à droite */
 .chat-layout {
     display: flex;
     align-items: stretch;
@@ -216,6 +225,7 @@ main > a:hover {
     background: #082c5b;
 }
 
+/* Bouton de déconnexion */
 .logout-zone {
     margin-top: auto;
     padding-top: 16px;
@@ -252,6 +262,7 @@ main > a:hover {
     display: none;
 }
 
+/* Conversation : en-tête et messages */
 .chat-panel {
     flex: 1;
     background: white;
@@ -329,10 +340,12 @@ main > a:hover {
     max-width: 70%;
 }
 
+/* Force le masquage des éléments hidden, même ceux en display: flex */
 [hidden] {
     display: none !important;
 }
 
+/* Panneau Navigation (ouvert par le bouton Agrandir) */
 .navigation-panel {
     position: fixed;
     inset: 0;
@@ -415,6 +428,38 @@ main > a:hover {
     margin-top: 16px;
 }
 
+/* Pages de texte (politique de confidentialité) */
+.page-texte {
+    background: white;
+    width: 90%;
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.page-texte h2 {
+    margin: 24px 0 8px;
+    color: #082c5b;
+    font-size: 1.2rem;
+}
+
+.page-texte p,
+.page-texte ul {
+    margin-bottom: 10px;
+}
+
+.page-texte ul {
+    padding-left: 24px;
+}
+
+.page-texte-date {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Pied de page */
 footer {
     background: #082c5b;
     color: whitesmoke;

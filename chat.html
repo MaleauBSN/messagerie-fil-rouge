@@ -6,12 +6,13 @@
     <title>Le Chat - Ma super messagerie</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="assets/style/main.css">
+    <link rel="stylesheet" href="assets/css/main.css">
 
 </head>
 <body>
 
 <main class="chat-layout">
+    <!-- Liste des contacts -->
     <aside class="contacts-panel">
         <div class="panel-header">
             <h2>Liste des contacts</h2>
@@ -30,6 +31,7 @@
         </div>
     </aside>
 
+    <!-- Conversation -->
     <section class="chat-panel">
         <div class="chat-header">
             <div class="header-contact" data-contact-id="">
@@ -61,6 +63,7 @@
     </section>
 </main>
 
+<!-- Panneau Navigation, ouvert par le bouton Agrandir -->
 <div id="navigation-panel" class="navigation-panel" hidden>
     <div class="navigation-content">
         <div class="navigation-header">
@@ -87,12 +90,11 @@
 
     <p>&copy; <script>document.write(new Date().getFullYear())</script> - Tous droits réservés</p>
     <nav>
-        <a href="politique-confidentialite.html">Politique de confidentialité</a> ·
-        <a href="conditions-utilisation.html">Conditions d'utilisation</a> ·
-        <a href="informations-legales.html">Informations légales</a>
+        <a href="politique-confidentialite.html">Politique de confidentialité</a>
     </nav>
 </footer>
 
+<!-- Scripts : la librairie Supabase doit être chargée avant les fichiers qui l'utilisent -->
 <script src="assets/js/main.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="assets/js/supabase.js"></script>
