@@ -47,7 +47,7 @@ function connexion() {
 
         const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
         if (error) {
-            status.textContent = error.message;
+            status.textContent = "Les informations ne sont associées à aucun compte.";
         } else {
             window.location.href = "chat.html";
         }
@@ -71,6 +71,18 @@ function deconnexion() {
             window.location.href = "sign_in.html";
         }
     });
+}
+
+function enregistrer_message() {
+    const status = document.getElementById("bouton-envoyer");
+    if (!bouton) return;
+
+    bouton.addEventListener("click", async () => {
+        const message = document.getElementById("barre-texte-message");
+
+        supabaseClient.from("messages")
+        supabaseClient.insert([{content : message}])
+    })
 }
 
 inscription();
