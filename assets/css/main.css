@@ -490,6 +490,8 @@ footer nav a:hover {
 .barre-texte {
     width: 100%;
     display: flex;
+    margin-bottom: 5px;
+    padding-right: 5px;
 }
 
 .barre-texte input {
@@ -503,6 +505,7 @@ footer nav a:hover {
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
+    background-color: #F0F8FF;
 }
 
 .bouton-envoyer button[type="submit"] {
@@ -515,4 +518,5 @@ footer nav a:hover {
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
+    background-color: #356aae;
 }
