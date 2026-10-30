@@ -81,12 +81,19 @@ function connexion() {
         const password = document.getElementById("password").value;
         const status = document.getElementById("signin-status");
 
-        const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
+        const { data, error } = await supabaseClient.auth.signInWithPassword({
+            email,
+            password
+        });
+
         if (error) {
             document.getElementById("password").value = "";
             status.style.color = "rgb(224, 104, 104)";
             status.textContent = "Les informations ne sont associées à aucun compte.";
         } else {
+            // Enregistrer l'ID de l'utilisateur
+            sessionStorage.setItem("userId", data.user.id);
+
             window.location.href = "chat.html";
         }
     });
@@ -112,33 +119,125 @@ function deconnexion() {
     });
 }
 
-async function enregistrer_message() {
+function enregistrer_message() {
     const bouton = document.getElementById("bouton-envoyer");
     if (!bouton) return;
 
     bouton.addEventListener("click", async () => {
-        const message = document.getElementById("barre-texte-message");
+        const userId = sessionStorage.getItem("userId");
+        const destinataireId = sessionStorage.getItem("destinataireId");
+        const barreMessage = document.getElementById("barre-texte-message");
+        const message = barreMessage.value.trim();
 
-        supabaseClient.from("messages").insert([{content : message}]);
+        if (!userId || !destinataireId || !message) return;
+
+        const { error } = await supabaseClient
+            .from("messages")
+            .insert([{
+                content: message,
+                destinataire_id: destinataireId,
+                user_id: userId
+            }]);
+
         if (error) {
             console.error("Erreur :", error.message);
         } else {
             console.log("Message enregistré !");
+
+            // Vider la barre de texte
+            barreMessage.value = "";
+
+            // Actualiser les messages
+            await recupere_message(destinataireId);
         }
     });
 }
 
-function recupere_message() {
+async function recupere_message() {
+    const userId = sessionStorage.getItem("userId");
+    const destinataireId = sessionStorage.getItem("destinataireId");
+    const listeMessages = document.getElementById("message-list");
 
+    if (!userId || !listeMessages) return;
+
+    // Récupérer les messages de la conversation
+    const { data, error } = await supabaseClient
+        .from("messages")
+        .select("*")
+        .or(
+            `and(user_id.eq.${userId},destinataire_id.eq.${destinataireId}),` +
+            `and(user_id.eq.${destinataireId},destinataire_id.eq.${userId})`
+        );
+
+    if (error) {
+        console.error("Erreur :", error.message);
+        return;
+    }
+
+    // Vider la liste
+    listeMessages.innerHTML = "";
+
+    // Afficher chaque message
+    data.forEach(message => {
+        const element = document.createElement("div");
+
+        if (message.user_id != userId) {
+            element.classList.add("message-recu");
+            element.textContent = message.content;
+            element.dataset.userId = message.destinataire_id;
+
+            listeMessages.appendChild(element);
+        } else {
+            element.classList.add("message-envoye");
+            element.textContent = message.content;
+            element.dataset.userId = message.destinataire_id;
+
+            listeMessages.appendChild(element);
+        }
+        
+    });
 }
 
 function recupere_chanel() {
 
 }
 
-async function recupere_contact() {
-    const listUsers = await supabaseClient.auth.admin.listUsers();
-    console.log(listUsers)
+async function recupere_contacts() {
+
+    const { data, error } = await supabaseClient
+        .from("profiles")
+        .select("user_id, user_name");
+
+    if (error) {
+        console.error("Erreur :", error.message);
+        return;
+    }
+
+    const listeContacts = document.getElementById("contact-list");
+
+    // Vider la liste avant de la remplir
+    listeContacts.innerHTML = "";
+
+    const userId = sessionStorage.getItem("userId")
+
+    // Créer un élément pour chaque profil
+    data.forEach(profil => {
+        const contact = document.createElement("div");
+
+        if (profil.user_id != userId) {
+            contact.classList.add("contact");
+            contact.textContent = profil.user_name;
+            contact.dataset.userId = profil.user_id;
+
+            listeContacts.appendChild(contact);
+
+            contact.addEventListener("click", async () => {
+            sessionStorage.setItem("destinataireId", profil.user_id);
+            recupere_message();
+            });
+        }
+        
+    });
 
 }
 
@@ -157,5 +256,5 @@ function passwordIsValid(password) {
 inscription();
 connexion();
 deconnexion();
-recupere_contact();
+recupere_contacts();
 enregistrer_message();

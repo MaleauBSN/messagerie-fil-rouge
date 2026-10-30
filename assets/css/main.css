@@ -206,6 +206,15 @@ main > a:hover {
 }
 
 .contact {
+    border-radius: 5px;
+    display: block;
+    background: #356aae;
+    color: white;
+    padding: 10px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
     margin-bottom: 10px;
 }
 
@@ -336,12 +345,23 @@ main > a:hover {
     overflow-y: auto;
 }
 
-.message {
+.message-recu {
     background: #F0F8FF;
     padding: 10px 14px;
     border-radius: 8px;
     margin-bottom: 10px;
     max-width: 70%;
+}
+
+.message-envoye {
+    background: #6e9cc5;
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    min-width: 10%;
+    max-width: 70%;
+    margin-right: 0;
+    margin-left: auto;
 }
 
 /* Force le masquage des éléments hidden, même ceux en display: flex */
