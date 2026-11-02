@@ -76,9 +76,26 @@ main {
     gap: 18px;
 }
 
-.form-connexion h1 {
+.form-connexion h1,
+.form-connexion h2 {
     color: white;
     margin-bottom: 20px;
+}
+
+.form-connexion .info-compte {
+    margin-bottom: 18px;
+    color: whitesmoke;
+}
+
+.form-connexion .case {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 0;
+}
+
+.form-connexion input[type="checkbox"] {
+    width: auto;
 }
 
 .form-connexion label {
@@ -195,19 +212,82 @@ main > a:hover {
     font-size: 1.1rem;
     flex-shrink: 0;
     transition: background-color 0.2s ease;
+    border: none;
+    cursor: pointer;
 }
 
 .btn-add:hover {
     background: #082c5b;
 }
 
+/* Barre de recherche des salons et des contacts */
+.recherche {
+    width: 100%;
+    padding: 8px 10px;
+    margin-bottom: 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+.recherche-vide {
+    margin-bottom: 10px;
+    color: #666;
+    font-size: 0.85rem;
+}
+
+/* Salons : liste, formulaire de création et message d'erreur */
+.salon-list {
+    list-style: none;
+    max-height: 180px;
+    overflow-y: auto;
+    margin-bottom: 16px;
+}
+
+.salon-form {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 10px;
+}
+
+.salon-form input {
+    flex: 1;
+    min-width: 0;
+    padding: 6px 8px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.salon-form button {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 8px;
+    background: #356aae;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.salon-status {
+    color: #8b0000;
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+}
+
+.salon-status:empty {
+    display: none;
+}
+
 .contact-list {
     list-style: none;
 }
 
-.contact {
+.contact,
+.salon {
     border-radius: 5px;
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 8px;
     background: #356aae;
     color: white;
     padding: 10px 14px;
@@ -216,6 +296,47 @@ main > a:hover {
     font-weight: bold;
     transition: background-color 0.2s ease;
     margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.salon {
+    background: #082c5b;
+}
+
+/* Pastille en ligne / hors ligne, nom et badge de messages non lus d'un contact ou d'un salon */
+.nom-element {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.pastille-statut {
+    width: 10px;
+    height: 10px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #9aa5b1;
+}
+
+.pastille-statut.en-ligne {
+    background: #3ddc84;
+}
+
+.badge-non-lu {
+    min-width: 20px;
+    padding: 0 6px;
+    border-radius: 10px;
+    background: #e53935;
+    color: white;
+    font-size: 0.75rem;
+    text-align: center;
+}
+
+/* Contact ou salon dont la conversation est ouverte */
+.contact.actif,
+.salon.actif {
+    outline: 3px solid #ffad74;
 }
 
 .contact a {
@@ -234,14 +355,33 @@ main > a:hover {
     background: #082c5b;
 }
 
-/* Bouton de déconnexion */
+/* Boutons Paramètres et Déconnexion */
 .logout-zone {
     margin-top: auto;
     padding-top: 16px;
 }
 
+.btn-parametres {
+    display: block;
+    margin-bottom: 8px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    background: #356aae;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.btn-parametres:hover {
+    background: #082c5b;
+}
+
 .btn-logout {
     width: 100%;
+    font-size: 0.9rem;
     padding: 10px 14px;
     border: none;
     border-radius: 8px;
@@ -362,6 +502,44 @@ main > a:hover {
     max-width: 70%;
     margin-right: 0;
     margin-left: auto;
+}
+
+/* Statut du contact (en-tête) et « en train d'écrire » */
+.statut-contact {
+    font-size: 0.8rem;
+    margin-left: 12px;
+}
+
+.statut-contact.en-ligne::before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-right: 6px;
+    border-radius: 50%;
+    background: #3ddc84;
+}
+
+.indicateur-ecriture {
+    min-height: 1.4em;
+    padding: 0 20px;
+    font-size: 0.85rem;
+    font-style: italic;
+    color: #555;
+}
+
+/* Pseudo de l'auteur (messages de salon) et heure affichée sous chaque message */
+.message-auteur {
+    display: block;
+    font-size: 0.8rem;
+    color: #082c5b;
+}
+
+.message-heure {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.75rem;
+    opacity: 0.7;
 }
 
 /* Force le masquage des éléments hidden, même ceux en display: flex */
@@ -539,4 +717,124 @@ footer nav a:hover {
     justify-content: center;
     font-size: 1.5rem;
     background-color: #356aae;
+}
+/* Adaptation aux tablettes et aux téléphones */
+@media (max-width: 768px) {
+    header {
+        padding: 14px;
+        margin: 16px auto;
+    }
+
+    header h1 {
+        font-size: 1.3rem;
+        text-align: center;
+    }
+
+    /* Accueil : les deux boutons l'un sous l'autre */
+    .cta {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn-connexion,
+    .btn-inscription {
+        width: 80%;
+    }
+
+    /* Chat : contacts au-dessus de la conversation */
+    .chat-layout {
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 16px;
+    }
+
+    .contacts-panel {
+        width: 100%;
+    }
+
+    .salon-list {
+        max-height: 100px;
+    }
+
+    .contact-list {
+        max-height: 130px;
+        overflow-y: auto;
+    }
+
+    /* Paramètres et Déconnexion côte à côte */
+    .logout-zone {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .btn-parametres,
+    .btn-logout {
+        flex: 1;
+        width: auto;
+        margin-bottom: 0;
+    }
+
+    .logout-status {
+        width: 100%;
+    }
+
+    .chat-panel {
+        flex: none;
+        height: 75vh;
+        min-height: 420px;
+    }
+
+    .chat-header {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .header-contact,
+    .header-navigation {
+        width: 100%;
+        margin-left: 0;
+        padding: 12px 16px;
+    }
+
+    .message-list {
+        padding: 12px;
+    }
+
+    .message-recu,
+    .message-envoye {
+        max-width: 85%;
+    }
+
+    .barre-texte {
+        padding: 0 8px;
+    }
+
+    .barre-texte input {
+        flex: 1;
+        min-width: 0;
+        width: auto;
+        margin-left: 0;
+        font-size: 1.1rem;
+    }
+
+    .barre-texte button {
+        flex-shrink: 0;
+        margin-left: 6px;
+    }
+
+    .page-texte {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-connexion {
+        padding: 20px;
+    }
+
+    .btn-connexion,
+    .btn-inscription {
+        width: 90%;
+    }
 }

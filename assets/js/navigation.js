@@ -62,8 +62,8 @@ async function maj_navigation(forcer) {
 
         const confirmation = forcer ? "Position enregistrée. " : "";
 
-        const contactId = document.querySelector(".header-contact").dataset.contactId;
-        if (!contactId) {
+        const contactId = sessionStorage.getItem("destinataireId");
+        if (!est_uuid(contactId)) {
             afficher_statut(confirmation + "Aucun contact sélectionné pour calculer la distance.", forcer ? "ok" : "");
             return;
         }

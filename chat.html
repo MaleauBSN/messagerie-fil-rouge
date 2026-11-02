@@ -14,6 +14,22 @@
 <main class="chat-layout">
     <!-- Liste des contacts -->
     <aside class="contacts-panel">
+        <!-- Recherche dans les salons et les contacts -->
+        <input type="search" id="recherche" class="recherche" placeholder="Rechercher un salon ou un contact" aria-label="Rechercher un salon ou un contact">
+        <p id="recherche-vide" class="recherche-vide" hidden>Aucun résultat</p>
+
+        <!-- Salons publics : n'importe quel utilisateur connecté peut en créer un -->
+        <div class="panel-header">
+            <h2>Salons</h2>
+            <button type="button" id="salon-ajouter" class="btn-add" aria-label="Créer un salon">+</button>
+        </div>
+        <form id="salon-form" class="salon-form" hidden>
+            <input type="text" id="salon-nom" maxlength="30" placeholder="Nom du salon" required>
+            <button type="submit">Créer</button>
+        </form>
+        <p id="salon-status" class="salon-status"></p>
+        <ul class="salon-list" id="salon-list"></ul>
+
         <div class="panel-header">
             <h2>Liste des contacts</h2>
         </div>
@@ -25,6 +41,7 @@
         </ul>
 
         <div class="logout-zone">
+            <a href="parametres.html" class="btn-parametres">Paramètres</a>
             <button type="button" id="logout-button" class="btn-logout">Déconnexion</button>
             <p id="logout-status" class="logout-status"></p>
         </div>
@@ -35,6 +52,7 @@
         <div class="chat-header">
             <div class="header-contact" id="header-contact">
                 <h2>Nom du contact</h2>
+                <small id="statut-contact" class="statut-contact"></small>
             </div>
             <div class="header-navigation">
                 <h2>Navigation</h2>
@@ -46,6 +64,9 @@
         
         <ul class="message-list" id="message-list">
         </ul>
+
+        <!-- « X est en train d'écrire... » -->
+        <p id="indicateur-ecriture" class="indicateur-ecriture"></p>
 
         <div class="barre-texte">
             <input id="barre-texte-message" class="barre-texte-message">
@@ -92,6 +113,7 @@
 <script src="assets/js/supabase.js"></script>
 <script src="assets/js/geolocalisation.js"></script>
 <script src="assets/js/navigation.js"></script>
+<script src="assets/js/indicateurs.js"></script>
 
 </body>
 </html>
