@@ -3,14 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Les parametres - Ma super messagerie</title>
+    <title>Paramètres – Wallo</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
 
+<header>
+    <h1>Paramètres du compte</h1>
+</header>
 
+<main>
+    <!-- Pseudo -->
+    <div class="form-connexion">
+        <h2>Mon profil</h2>
+        <p class="info-compte">Adresse courriel : <strong id="parametres-email">...</strong></p>
+
+        <form id="pseudo-form">
+            <div>
+                <label for="pseudo-parametre">Pseudo</label>
+                <input type="text" id="pseudo-parametre" name="pseudo" maxlength="30" required>
+            </div>
+
+            <button type="submit">Enregistrer le pseudo</button>
+            <p id="pseudo-status" class="form-status"></p>
+        </form>
+    </div>
+
+    <!-- Mot de passe -->
+    <div class="form-connexion">
+        <h2>Changer le mot de passe</h2>
+
+        <form id="mdp-form">
+            <div>
+                <label for="password-actuel">Mot de passe actuel</label>
+                <input type="password" id="password-actuel" name="password-actuel" autocomplete="current-password" required>
+            </div>
+
+            <div>
+                <label for="password">Nouveau mot de passe</label>
+                <input type="password" id="password" name="password" autocomplete="new-password" minlength="8" required>
+                <ul id="password-requirements">
+                    <li id="req-length">Au moins 8 caractères</li>
+                    <li id="req-uppercase">Une majuscule</li>
+                    <li id="req-number">Un chiffre</li>
+                </ul>
+            </div>
+
+            <div>
+                <label for="password-confirm">Confirmer le nouveau mot de passe</label>
+                <input type="password" id="password-confirm" name="password-confirm" autocomplete="new-password" minlength="8" required>
+            </div>
+
+            <button type="submit">Changer le mot de passe</button>
+            <p id="mdp-status" class="form-status"></p>
+        </form>
+    </div>
+
+    <!-- Notifications -->
+    <div class="form-connexion">
+        <h2>Notifications</h2>
+
+        <label class="case" for="son-notifications">
+            <input type="checkbox" id="son-notifications">
+            Jouer un son à la réception d'un nouveau message
+        </label>
+    </div>
+
+    <a href="chat.html">Retour au chat</a>
+</main>
 
 <footer>
     <p>&copy; <script>document.write(new Date().getFullYear())</script> - Tous droits réservés</p>
@@ -19,7 +81,10 @@
     </nav>
 </footer>
 
-<!-- JS en fin de body pour ne pas bloquer le rendu -->
+<!-- Scripts : la librairie Supabase doit être chargée avant les fichiers qui l'utilisent -->
 <script src="assets/js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/js/supabase.js"></script>
+<script src="assets/js/parametres.js"></script>
 </body>
 </html>
