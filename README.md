@@ -23,6 +23,8 @@ Une messagerie instantanée Web permettant d'échanger des messages texte en tem
 - Affichage horodaté des messages
 
 ### Secondaires
+- **Notification à la réception d'un message** : badge rouge avec le nombre de messages non lus sur le contact ou le salon, nombre affiché dans le titre de l'onglet, et petit son (désactivable dans les Paramètres).
+- **Indicateurs** : pastille « en ligne / hors ligne » sur les contacts, « X est en train d'écrire... » dans la conversation, et statut « Envoyé / Reçu / Lu » sous les messages directs envoyés.
 - **Distance et temps de trajet entre utilisateurs** — Dans chaque conversation, l'application affiche la distance et le temps de trajet estimé entre l'utilisateur et son contact, calculés en temps réel à partir de leurs adresses respectives via l'API Distancematrix.ai. Cette information apparaît directement dans l'en-tête du salon de discussion (ex. « 12 km · 18 min »), sans interrompre l'échange de messages.
 
 ## Technologies
@@ -47,7 +49,9 @@ Convention de nommage : noms de fichiers et de dossiers en minuscules, en franç
     │   └── main.css                # Feuille de style
     ├── js/
     │   ├── main.js                 # Vérification des formulaires
-    │   ├── supabase.js             # Client Supabase et authentification
+    │   ├── supabase.js             # Client Supabase, authentification, contacts, salons et messages
+    │   ├── indicateurs.js          # En ligne, « en train d'écrire », notifications et accusés de lecture
+    │   ├── parametres.js           # Page Paramètres (pseudo, mot de passe, son)
     │   ├── geolocalisation.js      # Position et distance (API Distancematrix.ai)
     │   └── navigation.js           # Panneau Navigation
     └── docs/                       # Scripts SQL et documents du projet
