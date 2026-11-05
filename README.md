@@ -47,12 +47,11 @@ Convention de nommage : noms de fichiers et de dossiers en minuscules, en franç
 └── assets/
     ├── css/
     │   └── main.css                # Feuille de style
-    ├── js/
-    │   ├── main.js                 # Vérification des formulaires
-    │   ├── supabase.js             # Client Supabase, authentification, contacts, salons et messages
-    │   ├── indicateurs.js          # En ligne, « en train d'écrire », notifications et accusés de lecture
-    │   ├── parametres.js           # Page Paramètres (pseudo, mot de passe, son)
-    │   ├── geolocalisation.js      # Position et distance (API Distancematrix.ai)
-    │   └── navigation.js           # Panneau Navigation
-    └── docs/                       # Scripts SQL et documents du projet
+    └── js/
+        ├── main.js                 # Vérification des formulaires
+        ├── supabase.js             # Client Supabase, authentification, contacts, salons et messages
+        ├── indicateurs.js          # En ligne, « en train d'écrire », notifications et accusés de lecture
+        ├── parametres.js           # Page Paramètres (pseudo, mot de passe, son)
+        ├── geolocalisation.js      # Position et distance (API Distancematrix.ai)
+        └── navigation.js           # Panneau Navigation
 ```
