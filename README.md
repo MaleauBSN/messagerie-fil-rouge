@@ -1,8 +1,8 @@
-# Messagerie Fil-Rouge
+# Wallo
 
 Projet réalisé dans le cadre du cours **8WEB101 – Conception et programmation de sites Web** (UQAC, automne 2026).
 
-Une messagerie instantanée Web permettant d'échanger des messages texte en temps réel.
+Wallo est une messagerie instantanée Web permettant d'échanger des messages texte en temps réel.
 
 **Site en ligne :** [GitHub Page](https://maleaubsn.github.io/messagerie-fil-rouge/)
 
