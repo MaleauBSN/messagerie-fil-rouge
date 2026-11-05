@@ -326,18 +326,8 @@ function enregistrer_message() {
     });
 }
 
-// Affiche la conversation ouverte (contact ou salon), du plus ancien au plus récent message
-async function recupere_message() {
-    const listeMessages = document.getElementById("message-list");
-    const conversation = conversation_active();
-
-    if (!listeMessages || !conversation) return;
-
-    const userId = await get_user_id();
-    if (!userId) return;
-
-    await charger_profils();
-
+// Lit les messages d'une conversation, avec les accusés de réception si les colonnes existent
+async function charger_messages_conversation(conversation, userId) {
     // Requête des messages de la conversation, avec ou sans les colonnes d'accusés de réception
     const lire_messages = (avecAccuses) => {
         let requete = supabaseClient
@@ -363,6 +353,23 @@ async function recupere_message() {
         accusesDisponibles = false;
         ({ data, error } = await lire_messages(false));
     }
+
+    return { data, error };
+}
+
+// Affiche la conversation ouverte (contact ou salon), du plus ancien au plus récent message
+async function recupere_message() {
+    const listeMessages = document.getElementById("message-list");
+    const conversation = conversation_active();
+
+    if (!listeMessages || !conversation) return;
+
+    const userId = await get_user_id();
+    if (!userId) return;
+
+    await charger_profils();
+
+    const { data, error } = await charger_messages_conversation(conversation, userId);
 
     if (error) {
         console.error("Erreur :", error.message);
@@ -578,9 +585,70 @@ function passwordIsValid(password) {
     return longueur && majuscule && chiffre;
 }
 
+// Le temps réel applique les règles d'accès avec le rôle de l'abonné : le canal doit donc
+// utiliser le jeton de l'utilisateur connecté avant de s'abonner (renvoie false sans session)
+async function authentifier_realtime() {
+    const { data: { session } } = await supabaseClient.auth.getSession();
+    if (!session) return false;
+
+    await supabaseClient.realtime.setAuth(session.access_token);
+    return true;
+}
+
+// Journalise l'état d'un abonnement en direct (SUBSCRIBED, CHANNEL_ERROR, TIMED_OUT, CLOSED)
+function suivre_abonnement(nom) {
+    return (statut, erreur) => {
+        if (statut !== "SUBSCRIBED") {
+            console.warn("Temps réel (" + nom + ") :", statut, erreur ?? "");
+        }
+    };
+}
+
+// Vérifie les nouveaux messages de la conversation ouverte : filet de sécurité si le temps réel
+// ne livre pas tout (aucune garantie de livraison côté Supabase) ; met aussi les statuts à jour
+async function actualiser_messages() {
+    const conversation = conversation_active();
+    if (!conversation || !document.getElementById("message-list")) return;
+    if (document.visibilityState !== "visible") return;
+
+    const userId = await get_user_id();
+    if (!userId) return;
+
+    const { data, error } = await charger_messages_conversation(conversation, userId);
+    if (error) return;
+
+    // Abandonner si l'utilisateur a changé de conversation pendant le chargement
+    const encore = conversation_active();
+    if (!encore || encore.type !== conversation.type || encore.id !== conversation.id) return;
+
+    await charger_profils();
+
+    let nouveaux = 0;
+    data.forEach(message => {
+        if (bullesMessages.has(message.id)) {
+            maj_accuse_message(message);
+        } else {
+            ajouter_message(message, userId);
+            nouveaux++;
+        }
+    });
+
+    if (nouveaux > 0) window.marquer_conversation_lue?.();
+}
+
 // Affiche en direct les nouveaux messages de la conversation ouverte et les nouveaux salons
-function activer_realtime() {
+async function activer_realtime() {
     if (!document.getElementById("message-list")) return;
+
+    // Actualisation de secours toutes les 5 secondes
+    setInterval(actualiser_messages, 5000);
+
+    if (!(await authentifier_realtime())) return;
+
+    // Renouveler le jeton du canal quand la session est rafraîchie
+    supabaseClient.auth.onAuthStateChange((evenement, session) => {
+        if (session) supabaseClient.realtime.setAuth(session.access_token);
+    });
 
     supabaseClient
         .channel("public:messages")
@@ -617,7 +685,7 @@ function activer_realtime() {
                 }
             }
         )
-        .subscribe();
+        .subscribe(suivre_abonnement("messages"));
 
     supabaseClient
         .channel("public:channels")
@@ -629,7 +697,7 @@ function activer_realtime() {
             },
             (payload) => ajouter_salon(payload.new)
         )
-        .subscribe();
+        .subscribe(suivre_abonnement("salons"));
 }
 
 inscription();

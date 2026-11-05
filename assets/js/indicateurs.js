@@ -56,7 +56,8 @@ function demarrer_presence() {
             utilisateursEnLigne = new Set(Object.keys(canal.presenceState()));
             maj_statuts_en_ligne();
         })
-        .subscribe(async (statut) => {
+        .subscribe(async (statut, erreur) => {
+            suivre_abonnement("présence")(statut, erreur);
             if (statut === "SUBSCRIBED") {
                 await canal.track({ en_ligne_depuis: new Date().toISOString() });
             }
@@ -118,7 +119,7 @@ function demarrer_ecriture() {
     canalEcriture = supabaseClient.channel("ecriture:wallo");
     canalEcriture
         .on("broadcast", { event: "ecriture" }, ({ payload }) => recevoir_ecriture(payload))
-        .subscribe();
+        .subscribe(suivre_abonnement("écriture"));
 
     const barreTexte = document.getElementById("barre-texte-message");
     if (barreTexte) barreTexte.addEventListener("input", envoyer_ecriture);
@@ -315,7 +316,7 @@ function demarrer_messages_entrants() {
             { event: "UPDATE", schema: "public", table: "messages" },
             (payload) => maj_accuse_message(payload.new)
         )
-        .subscribe();
+        .subscribe(suivre_abonnement("notifications"));
 }
 
 // ---------- Démarrage ----------
@@ -327,6 +328,7 @@ async function demarrer_indicateurs() {
     if (!utilisateurCourant) return;
 
     await charger_profils();
+    await authentifier_realtime();
 
     demarrer_presence();
     demarrer_ecriture();
