@@ -25,7 +25,7 @@ Wallo est une messagerie instantanée Web permettant d'échanger des messages te
 ### Secondaires
 - **Notification à la réception d'un message** : badge rouge avec le nombre de messages non lus sur le contact ou le salon, nombre affiché dans le titre de l'onglet, et petit son (désactivable dans les Paramètres).
 - **Indicateurs** : pastille « en ligne / hors ligne » sur les contacts, « X est en train d'écrire... » dans la conversation, et statut « Envoyé / Reçu / Lu » sous les messages directs envoyés.
-- **Distance et temps de trajet entre utilisateurs** — Dans chaque conversation, l'application affiche la distance et le temps de trajet estimé entre l'utilisateur et son contact, calculés en temps réel à partir de leurs adresses respectives via l'API Distancematrix.ai. Cette information apparaît directement dans l'en-tête du salon de discussion (ex. « 12 km · 18 min »), sans interrompre l'échange de messages.
+- **Distance et temps de trajet entre utilisateurs** — Dans chaque conversation, l'application affiche la distance et le temps de trajet estimé entre l'utilisateur et son contact, calculés à partir de leurs positions GPS respectives (géolocalisation du navigateur, avec autorisation de l'utilisateur) via l'API [Distancematrix.ai](https://distancematrix.ai). Ces informations s'affichent dans le panneau Navigation, ouvert par le bouton « Agrandir » de la conversation, avec un bouton « Mettre à jour » et des liens d'itinéraire vers Google Maps et Waze. La position n'est réenregistrée et l'API n'est rappelée que si l'utilisateur s'est déplacé de plus de 10 m ou clique sur « Mettre à jour », sans interrompre l'échange de messages.
 
 ## Technologies
 
