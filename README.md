@@ -32,6 +32,19 @@ Wallo est une messagerie instantanée Web permettant d'échanger des messages te
 - HTML / CSS / JavaScript
 - Supabase (comptes, salons, messages)
 
+## Fonctionnement en bref
+
+- **Temps réel** : le navigateur s'abonne aux nouveaux messages avec Supabase Realtime (WebSocket). Par sécurité, la conversation ouverte est aussi rechargée toutes les 5 secondes, ce qui garantit que les messages arrivent même si le WebSocket est interrompu.
+- **Accès aux données** : les règles de sécurité de Supabase (RLS) limitent la lecture aux utilisateurs connectés. Un message privé n'est visible que par son expéditeur et son destinataire, et les salons de conversation sont publics.
+- **Position** : la position d'un utilisateur n'est enregistrée qu'avec son autorisation et seulement s'il s'est déplacé de plus de 10 m ou s'il demande une mise à jour.
+
+## Limites connues
+
+- La clé de l'API Distancematrix.ai est visible dans le code du site, car celui-ci n'a pas de serveur. Le choix est assumé dans le cadre de ce projet étudiant.
+- Tous les utilisateurs inscrits sont des contacts les uns des autres, il n'y a pas de demande d'ajout de contact.
+- Le partage d'images n'est pas implémenté.
+- La distance n'est affichée que si le contact a déjà enregistré sa position.
+
 ## Structure du projet
 
 Convention de nommage : noms de fichiers et de dossiers en minuscules, en français, avec les mots séparés par des tirets.
